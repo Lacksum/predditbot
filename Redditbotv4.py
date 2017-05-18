@@ -4,10 +4,12 @@ import time
 import os
 import random
 import csv
+import pickle
 
 #Strings for quick editing
+bot_version = "v0.1.4"
 bot_commands = "Current commands:\n\n- truth or dare\n\n- tell me a joke\n\n- make me a sandwich\n\n- info\n\n- help"
-bot_info = "Hi!  I'm ploungebot v0.1.3\n\nI run on python and use [reddit API](https://www.reddit.com/dev/api/) to interact with reddit and you\n\nTo see a command list try \"!ploungebot commands\"\n\n---\n\n ^^To ^^report ^^a ^^problem ^^or ^^issue ^^[message](https://www.reddit.com/message/compose?to=Lacksum&subject=&message=) ^^my ^^creator."
+bot_info = "Hi!  I'm ploungebot v0.1.4\n\nI run on python and use [reddit API](https://www.reddit.com/dev/api/) to interact with reddit and you\n\nTo see a command list try \"!ploungebot commands\"\n\n---\n\n ^^To ^^report ^^a ^^problem ^^or ^^issue ^^[message](https://www.reddit.com/message/compose?to=Lacksum&subject=&message=) ^^my ^^creator."
 bot_name = "!ploungebot"
 pony_string = ['fluttershy','rainbow','rarity','pinkie','twilight','applejack']
 tord_list = ['Truth','Dare']
@@ -93,24 +95,102 @@ def run_bot(r, comments_replied_to_v2):                                         
                 if comment.id not in comments_replied_to_v2 and not comment.author == r.user.me():
                     print("pony found")
                     print("comment ID is:", comment.id)
+
                     if "twilight" in comment.body:
                         print("found twilight")
-                        comment.reply("Did I hear you say twilight?")
+                        count = 0
+                        flag = True
+                        start = 0
+                        while flag:
+                            a = comment.body.find("twilight", start)
+                            if a == -1:
+                                flag = False
+                            else:
+                                 count += 1
+                                 start = a+1
+
+                        print(count)
+                        comment.reply("Did I hear you say twilight " + str(count) + " times?")
+
                     if "fluttershy" in comment.body:
                         print("found fluttershy")
-                        comment.reply("Did I hear you say fluttershy?")
+                        count = 0
+                        flag = True
+                        start = 0
+                        while flag:
+                            a = comment.body.find("fluttershy", start)
+                            if a == -1:
+                                flag = False
+                            else:
+                                 count += 1
+                                 start = a+1
+
+                        print(count)
+                        comment.reply("Did I hear you say fluttershy " +str(count) + " times?")
+
                     if "rarity" in comment.body:
                         print("found rarity")
-                        comment.reply("Did I hear you say rarity?")
+                        count = 0
+                        flag = True
+                        start = 0
+                        while flag:
+                            a = comment.body.find("rarity", start)
+                            if a == -1:
+                                flag = False
+                            else:
+                                 count += 1
+                                 start = a+1
+
+                        print(count)
+                        comment.reply("Did I hear you say rarity " + str(count) + " times?")
+
                     if "rainbow" in comment.body:
                         print("found rainbow")
-                        comment.reply("Did I hear you say rainbow dash?")
+                        count = 0
+                        flag = True
+                        start = 0
+                        while flag:
+                            a = comment.body.find("rainbow", start)
+                            if a == -1:
+                                flag = False
+                            else:
+                                 count += 1
+                                 start = a+1
+
+                        print(count)
+                        comment.reply("Did I hear you say rainbow dash " + str(count) + " times?")
+
                     if "pinkie" in comment.body:
                         print("found pinkie")
-                        comment.reply("Did I hear you say pinkie pie?")
+                        count = 0
+                        flag = True
+                        start = 0
+                        while flag:
+                            a = comment.body.find("pinkie", start)
+                            if a == -1:
+                                flag = False
+                            else:
+                                 count += 1
+                                 start = a+1
+
+                        print(count)
+                        comment.reply("Did I hear you say pinkie pie " + str(count) + " times?")
+
                     if "applejack" in comment.body:
                         print("found applejack")
-                        comment.reply("Did I hear you say applejack?")
+                        count = 0
+                        flag = True
+                        start = 0
+                        while flag:
+                            a = comment.body.find("applejack", start)
+                            if a == -1:
+                                flag = False
+                            else:
+                                 count += 1
+                                 start = a+1
+
+                        print(count)
+                        comment.reply("Did I hear you say applejack " + str(count) + " times?")
 
                     comments_replied_to_v2.append(comment.id)
                     with open("comments_replied_to_v2.txt", "a") as f:
